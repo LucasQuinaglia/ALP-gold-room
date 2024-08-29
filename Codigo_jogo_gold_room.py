@@ -2,7 +2,7 @@ from sys import exit
 def gold_room(): 
   print("This room is full of gold. How much do you take?") 
   choice = input("> ")
-  if "0" in choice or "1" in choice:
+  if choice.isdigit():
     how_much = int(choice)
   else: 
     dead("Man, learn to type a number.") 
@@ -17,6 +17,7 @@ def bear_room():
   print("The bear has a bunch of honey.")
   print("The fat bear is in front of another door.")   
   print("How are you going to move the bear?") 
+  print("Do you take the honey or taunt bear?")
   bear_moved = False
   while True: 
     choice = input("> ")
