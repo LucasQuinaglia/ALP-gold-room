@@ -1,4 +1,34 @@
 from sys import exit
+
+def dead_end():
+  print('Is just a dead end path')
+  print('you get back.')
+  return back_room()
+  
+
+def back_room():
+  print('This room get nothing, just walls and lights on the ceiling.')
+  print('Is like a maze, you can go left or right.')
+  print('Which way do you go?')
+  choice = input('> ')
+  if choice == 'left':
+    dead_end()
+  elif choice == 'right':
+    print('You see a glimpse of something you never seen before.')
+    print('You cannot to describe it.')
+    print('You step forward.')
+    return the_monster()
+  else:
+    print('I got no idea what that means.')
+    
+def the_monster():
+  print('In a crossing path, you see a child.')
+  print('The child apparently it is calm.')
+  print('You get a bit closer.')
+  print('And see something strange.')
+  print('The cild get the eyes black, like the void.')
+  
+
 def gold_room(): 
   print("This room is full of gold. How much do you take?") 
   choice = input("> ")
@@ -7,8 +37,11 @@ def gold_room():
   else: 
     dead("Man, learn to type a number.") 
   if how_much < 50:
-    print("Nice, you're not greedy, you win!") 
-    exit(0)
+    print("Nice, you're not greedy, you get the gold!") 
+    print('You step forward.')
+    print('You see a door and get in.')
+    print('You are now on the back rooms.')
+    back_room()
   else: 
     dead("You greedy bastard!")
 
@@ -27,7 +60,7 @@ def bear_room():
       print("The bear has moved from the door.")
       print("Open the door or taunt bear again?.") 
       bear_moved = True
-      choice = input("")
+      choice = input(">")
       if choice == "taunt bear":
         dead("The bear gets pissed off and chews your leg off.") 
       elif choice == "open door": 
@@ -47,7 +80,7 @@ def cthulhu_room():
   elif "head" in choice: 
     dead("Well that was tasty!")
   else:
-    cthulhu_room()
+    print("I got no idea what that means.")
 
 def dead(why):
   print(why, "Good job!") 
