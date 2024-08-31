@@ -42,10 +42,14 @@ def the_monster():
     print('The child falls and starts to crying.')
     print('And then you get the eye membrane, that is about 100 to 200 times more resistant than your skin.')
     print('You get out.')
+    
   elif choice == 'get out':
     print('You get out.')
     print('walking through the halls. You see somebody.')
-    print('')
+    print('He isn\'t a human. His muscles are exposed, he has no skin.')
+    print('He has a backpack full of items.')
+    print('He is a merchant.')
+    print('Would you like to buy something or get out?')
     
 
 def gold_room(): 
