@@ -1,5 +1,7 @@
 from sys import exit
 
+bag = 0
+
 def dead_end():
   print('Is just a dead end path')
   print('you get back.')
@@ -27,7 +29,24 @@ def the_monster():
   print('You get a bit closer.')
   print('And see something strange.')
   print('The cild get the eyes black, like the void.')
-  
+  print('You run.')
+  print('You run as fast as you can.')
+  print('You take the first right that you see.')
+  print('Then you see a gun. You take it.')
+  print('Would you take come back to face the child or get out?')
+  choice = input('> ')
+  if choice == 'face':
+    print('You get back to the child.')
+    print('You perceive that the child is blind.')
+    print('You shoot the child.')
+    print('The child falls and starts to crying.')
+    print('And then you get the eye membrane, that is about 100 to 200 times more resistant than your skin.')
+    print('You get out.')
+  elif choice == 'get out':
+    print('You get out.')
+    print('walking through the halls. You see somebody.')
+    print('')
+    
 
 def gold_room(): 
   print("This room is full of gold. How much do you take?") 
@@ -41,6 +60,7 @@ def gold_room():
     print('You step forward.')
     print('You see a door and get in.')
     print('You are now on the back rooms.')
+    bag = how_much
     back_room()
   else: 
     dead("You greedy bastard!")
