@@ -96,9 +96,12 @@ def merchant():
                     print('You want to leave or will buy something else?')
             elif choice == 'leave':
                 print('You leave the merchant.')
+                
                 break
+    elif choice == 'get out':
+      print('You decide not to interact with the merchant.')
     else:
-        print('You decide not to interact with the merchant.')
+      print('I have no idea what that means.')    
 
 def gold_room():
     global bag
