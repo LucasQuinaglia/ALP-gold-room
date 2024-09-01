@@ -103,7 +103,7 @@ def merchant(bag):
           print('I got no idea what that means.')
     
 
-def gold_room(bag): 
+def gold_room(): 
   print("This room is full of gold. How much do you take?") 
   choice = input("> ")
   if choice.isdigit():
