@@ -2,10 +2,128 @@ from sys import exit
 
 bag = 0
 
+inventory = []
+
 def dead_end():
     print('It\'s just a dead-end path.')
     print('You get back.')
     return back_room()
+  
+def final_battle():
+    print("As you proceed, you feel a chilling breeze.")
+    print("The walls around you seem to close in, the lights flickering erratically.")
+    print("You step into a vast chamber, where the temperature drops drastically.")
+    print("At the center of the room stands a towering figure, cloaked in darkness.")
+    print("You can barely make out its features, but its eyes glow a menacing red.")
+    print("This is the source of all the horrors you’ve faced.")
+    print("The final villain stands before you, waiting silently.")
+
+    print("Do you confront the villain, attempt to negotiate, or flee?")
+    choice = input("> ").lower()
+
+    if "confront" in choice:
+        confront_villain()
+    elif "negotiate" in choice:
+        negotiate_villain()
+    elif "flee" in choice:
+        flee_villain()
+    else:
+        print("I have no idea what that means.")
+        return final_battle()
+
+def confront_villain():
+    global bag
+    global inventory
+    print("You muster all your courage and step forward to confront the villain.")
+    print("The villain lets out a deep, resonant laugh that echoes through the chamber.")
+    print("It raises a hand, and you feel an invisible force pressing down on you.")
+    
+    if "sword" in inventory:
+        print("You unsheathe the sword you bought from the merchant.")
+        print("The blade seems to hum with energy as you charge at the villain.")
+        print("The villain recoils slightly as you strike, but it quickly recovers.")
+        print("A fierce battle ensues, with sparks flying as your sword clashes against the villain's dark energy.")
+        print("In a moment of desperation, you notice a glowing weak spot on the villain's chest.")
+        print("Do you aim for the weak spot or continue fighting?")
+        
+        choice = input("> ").lower()
+        if "aim" in choice:
+            print("You gather all your strength and aim for the glowing spot.")
+            print("Your sword pierces through the villain's defenses, striking the weak spot directly.")
+            print("The villain lets out a roar of agony as it crumbles to the ground, defeated.")
+            print("You stand victorious, but exhausted. The darkness begins to fade away.")
+            print("You have saved yourself, and perhaps the world, from a terrible fate.")
+        else:
+            print("You continue fighting, but the battle drags on.")
+            print("The villain's power seems endless, and you begin to tire.")
+            print("In your fatigue, you miss an opening, and the villain strikes you down.")
+            print("You fought bravely, but in the end, the villain was too powerful.")
+            if "potion" in inventory:
+                print("As you lay on the ground, you remember the potion you bought from the merchant.")
+                print("You quickly drink it, feeling a surge of energy.")
+                print("You rise to your feet, ready to face the villain once more.")
+                print("This time, you aim for the weak spot and strike true, defeating the villain.")
+                print("You have emerged victorious, but the battle has taken its toll.")
+                print("You have saved yourself, and perhaps the world, from a terrible fate.")
+            elif 'shield' in inventory:
+                print("As you lay on the ground, you remember the shield you bought from the merchant.")
+                print("You quickly raise the shield, deflecting the villain's attack.")
+                print("The shield absorbs the dark energy, and you feel a surge of power.")
+                print("You rise to your feet, ready to face the villain once more.")
+                print("This time, you aim for the weak spot and strike true, defeating the villain.")
+                print("You have emerged victorious, but the battle has taken its toll.")
+                print("You have saved yourself, and perhaps the world, from a terrible fate.")
+            else:
+                dead("You should have prepared better.")
+    else:
+        print("Without a weapon, you are helpless against the villain's might.")
+        print("The villain easily overpowers you, and you fall to the ground.")
+        dead("You should have prepared better.")
+
+def negotiate_villain():
+    print("You raise your hands in a gesture of peace, hoping to negotiate with the villain.")
+    print("The villain narrows its eyes, its dark aura intensifying.")
+    print("It speaks in a voice that chills you to the bone: 'Why should I spare you?'")
+    print("Do you offer to serve the villain, or try to persuade it to leave peacefully?")
+    
+    choice = input("> ").lower()
+    if "serve" in choice:
+        print("You offer to serve the villain, promising loyalty in exchange for your life.")
+        print("The villain considers your offer and then smiles cruelly.")
+        print("'Very well,' it says. 'But you will regret this decision.'")
+        print("You are bound to the villain's will, becoming its pawn in a dark and twisted world.")
+        print("You survive, but at a terrible cost.")
+    elif "persuade" in choice:
+        print("You try to persuade the villain that there is no need for violence.")
+        print("The villain listens silently, and for a moment, you think you might have succeeded.")
+        print("But then it laughs, a cold, heartless sound.")
+        print("'You are a fool to think you can change my mind,' it says.")
+        print("The villain attacks without warning, and you are caught off guard.")
+        dead("Your attempt at diplomacy has failed.")
+
+def flee_villain():
+    print("Realizing you are no match for the villain, you turn and flee.")
+    print("The villain's laughter echoes behind you as you sprint through the dark corridors.")
+    print("But no matter how fast you run, the darkness seems to follow, growing stronger.")
+    print("You find yourself back where you started, trapped in the chamber with the villain.")
+    print("There is no escape. You must face the villain, whether you want to or not.")
+    return final_battle()
+  
+def after_merchant():
+    print("You continue your journey through the halls.")
+    print("The sense of foreboding grows stronger with each step.")
+    print("Finally, you reach a large, ominous door.")
+    print("You know that beyond this door lies the final challenge.")
+    print("Do you enter?")
+    choice = input("> ").lower()
+    if "yes" in choice or "enter" in choice:
+        final_battle()
+    else:
+        print("You hesitate, unsure if you're ready for what lies ahead.")
+        print("But you know that there is no other way.")
+        print("With a deep breath, you push open the door and step inside.")
+        final_battle()
+
 
 def back_room():
     print('This room has nothing, just walls and lights on the ceiling.')
@@ -70,6 +188,7 @@ def merchant():
             if choice == 'potion':
                 if bag >= 5:
                     print('You bought a potion.')
+                    inventory.append('potion')
                     bag -= 5
                     print(f'You have {bag} gold.')
                     print('You want to leave or will buy something else?')
@@ -79,6 +198,7 @@ def merchant():
             elif choice == 'sword':
                 if bag >= 10:
                     print('You bought a sword.')
+                    inventory.append('sword')
                     bag -= 10
                     print(f'You have {bag} gold.')
                     print('You want to leave or will buy something else?')
@@ -88,6 +208,7 @@ def merchant():
             elif choice == 'shield':
                 if bag >= 15:
                     print('You bought a shield.')
+                    inventory.append('shield')
                     bag -= 15
                     print(f'You have {bag} gold.')
                     print('You want to leave or will buy something else?')
