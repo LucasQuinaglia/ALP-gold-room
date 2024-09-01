@@ -42,14 +42,26 @@ def the_monster():
     print('The child falls and starts to crying.')
     print('And then you get the eye membrane, that is about 100 to 200 times more resistant than your skin.')
     print('You get out.')
+    merchant()
     
   elif choice == 'get out':
     print('You get out.')
+    merchant()
+  else:
+    print('I got no idea what that means.')
+    
+def merchant():
     print('walking through the halls. You see somebody.')
     print('He isn\'t a human. His muscles are exposed, he has no skin.')
     print('He has a backpack full of items.')
     print('He is a merchant.')
     print('Would you like to buy something or get out?')
+    choice = input('> ')
+    if choice == 'buy':
+      print('The merchant has a lot of items that can be useful.')
+      print(f'You had {bag} gold')
+      print('The merchant has a potion that can heal you for 5 gold.')
+      print('')
     
 
 def gold_room(): 
@@ -84,7 +96,7 @@ def bear_room():
       print("The bear has moved from the door.")
       print("Open the door or taunt bear again?.") 
       bear_moved = True
-      choice = input(">")
+      choice = input("> ")
       if choice == "taunt bear":
         dead("The bear gets pissed off and chews your leg off.") 
       elif choice == "open door": 
