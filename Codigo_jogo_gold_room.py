@@ -73,25 +73,33 @@ def merchant():
                     print('You bought a potion.')
                     bag -= 5
                     print(f'You have {bag} gold.')
+                    print('You want to leave or will buy something else?')
                 else:
                     print('You don\'t have enough gold.')
+                    print('You want to leave or will buy something else?')
             elif choice == 'sword':
                 if bag >= 10:
                     print('You bought a sword.')
                     bag -= 10
                     print(f'You have {bag} gold.')
+                    print('You want to leave or will buy something else?')
                 else:
                     print('You don\'t have enough gold.')
+                    print('You want to leave or will buy something else?')
             elif choice == 'shield':
                 if bag >= 15:
                     print('You bought a shield.')
                     bag -= 15
                     print(f'You have {bag} gold.')
+                    print('You want to leave or will buy something else?')
                 else:
                     print('You don\'t have enough gold.')
-            else:
-                print('I have no idea what that means.')
-        print('You leave the merchant.')
+                    print('You want to leave or will buy something else?')
+            elif choice == 'leave':
+                print('You leave the merchant.')
+                break
+            
+        
     else:
         print('You decide not to interact with the merchant.')
 
