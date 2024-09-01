@@ -215,12 +215,11 @@ def merchant():
                 else:
                     print('You don\'t have enough gold.')
                     print('You want to leave or will buy something else?')
-            elif choice == 'leave':
-                print('You leave the merchant.')
-                
-                break
+        
+        after_merchant()
     elif choice == 'get out':
       print('You decide not to interact with the merchant.')
+      after_merchant()
     else:
       print('I have no idea what that means.')    
 
