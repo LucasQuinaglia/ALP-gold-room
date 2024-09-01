@@ -42,15 +42,15 @@ def the_monster():
     print('The child falls and starts to crying.')
     print('And then you get the eye membrane, that is about 100 to 200 times more resistant than your skin.')
     print('You get out.')
-    merchant()
+    merchant(bag)
     
   elif choice == 'get out':
     print('You get out.')
-    merchant()
+    merchant(bag)
   else:
     print('I got no idea what that means.')
     
-def merchant():
+def merchant(bag):
     print('walking through the halls. You see somebody.')
     print('He isn\'t a human. His muscles are exposed, he has no skin.')
     print('He has a backpack full of items.')
@@ -61,10 +61,49 @@ def merchant():
       print('The merchant has a lot of items that can be useful.')
       print(f'You had {bag} gold')
       print('The merchant has a potion that can heal you for 5 gold.')
-      print('')
+      print('He has a sword that can be useful for 10 gold.')
+      print('He has a shield that can protect you for 15 gold.')
+      print('What would you like to buy?')
+      while choice != 'leave':
+        choice = input('> ')
+        if choice == 'potion':
+          if bag >= 5:
+            print('You bought a potion.')
+            bag -= 5
+            print(f'You have {bag} gold.')
+            print('would you buy something else or leave?')
+            choice = input('> ')
+          else:
+            print('You don\'t have enough gold.')
+            print('would you buy something else or leave?')
+            choice = input('> ')
+        elif choice == 'sword':
+          if bag >= 10:
+            print('You bought a sword.')
+            bag -= 10
+            print(f'You have {bag} gold.')
+            print('would you buy something else or leave?')
+            choice = input('> ')
+          else:
+            print('You don\'t have enough gold.')
+            print('would you buy something else or leave?')
+            choice = input('> ')
+        elif choice == 'shield':
+          if bag >= 15:
+            print('You bought a shield.')
+            bag -= 15
+            print(f'You have {bag} gold.')
+            print('would you buy something else or leave?')
+            choice = input('> ')
+          else:
+            print('You don\'t have enough gold.')
+            print('would you buy something else or leave?')
+            choice = input('> ')
+        else:
+          print('I got no idea what that means.')
     
 
-def gold_room(): 
+def gold_room(bag): 
   print("This room is full of gold. How much do you take?") 
   choice = input("> ")
   if choice.isdigit():
@@ -100,7 +139,7 @@ def bear_room():
       if choice == "taunt bear":
         dead("The bear gets pissed off and chews your leg off.") 
       elif choice == "open door": 
-        gold_room()
+        gold_room(bag)
       else: 
         print("I got no idea what that means.")
     else: 
