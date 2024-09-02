@@ -1,14 +1,18 @@
 from sys import exit
 
+bag = 0
+
+inventory = []
+
 def dead_end():
-  print("It's just a dead end path")
+  print('Is just a dead end path')
   print('you get back.')
   return back_room()
   
 
 def back_room():
   print('This room get nothing, just walls and lights on the ceiling.')
-  print("It's like a maze, you can go left or right.")
+  print('Is like a maze, you can go left or right.')
   print('Which way do you go?')
   choice = input('> ')
   if choice == 'left':
@@ -26,80 +30,79 @@ def the_monster():
   print('The child apparently it is calm.')
   print('You get a bit closer.')
   print('And see something strange.')
-  print('The child has black eyes, like the void.')
-  print('You feel a chill in your spine.')
-  print('Something in your mind says to get closer.')
-  print('You can try to resist or get closer.')
-  print('What do you do?')
-  choice = input('> ')  
+  print('The cild get the eyes black, like the void.')
+  
 
-def gold_room(): 
-  print("This room is full of gold. How much do you take?") 
-  choice = input("> ")
-  if choice.isdigit():
-    how_much = int(choice)
-  else: 
-    dead("Man, learn to type a number.") 
-  if how_much < 50:
-    print("Nice, you're not greedy, you get the gold!") 
-    print('You step forward.')
-    print('You see a door and get in.')
-    print('You are now on the back rooms.')
-    back_room()
-  else: 
-    dead("You greedy bastard!")
+def gold_room():
+    global bag
+    print("This room is full of gold. How much do you take?")
+    choice = input("> ")
+    if choice.isdigit():
+        how_much = int(choice)
+    else:
+        dead("Man, learn to type a number.")
+    if how_much < 50:
+        print("Nice, you're not greedy. You take the gold!")
+        print('You step forward.')
+        print('You see a door and get in.')
+        print('You are now in the back rooms.')
+        bag = how_much
+        back_room()
+    else:
+        dead("You greedy bastard!")
 
 def bear_room():
-  print("There is a bear here.")
-  print("The bear has a bunch of honey.")
-  print("The fat bear is in front of another door.")   
-  print("How are you going to move the bear?") 
-  print("Do you take the honey or taunt bear?")
-  bear_moved = False
-  while True: 
-    choice = input("> ")
-    if choice == "take honey":
-     dead("The bear looks at you then slaps your face off.")
-    elif choice == "taunt bear" and not bear_moved: 
-      print("The bear has moved from the door.")
-      print("Open the door or taunt bear again?.") 
-      bear_moved = True
-      choice = input(">")
-      if choice == "taunt bear":
-        dead("The bear gets pissed off and chews your leg off.") 
-      elif choice == "open door": 
-        gold_room()
-      else: 
-        print("I got no idea what that means.")
-    else: 
-      print("I got no idea what that means.")
+    print("There is a bear here.")
+    print("The bear has a bunch of honey.")
+    print("The fat bear is in front of another door.")
+    print("How are you going to move the bear?")
+    print("Do you take the honey or taunt the bear?")
+    bear_moved = False
+    while True:
+        choice = input("> ").lower()
+        if choice == "take honey":
+            dead("The bear looks at you and slaps your face off.")
+        elif choice == "taunt bear" and not bear_moved:
+            print("The bear has moved from the door.")
+            print("Open the door or taunt the bear again?.")
+            bear_moved = True
+            choice = input("> ").lower()
+            if choice == "taunt bear":
+                dead("The bear gets pissed off and chews your leg off.")
+            elif choice == "open door":
+                gold_room()
+            else:
+                print("I got no idea what that means.")
+        else:
+            print("I got no idea what that means.")
 
-def cthulhu_room(): 
-  print("Here you see the great evil Cthulhu.")
-  print("He, it, whatever stares at you and you go insane.") 
-  print("Do you flee for your life or eat your head?")
-  choice = input("> ")
-  if "flee" in choice: 
-    start()
-  elif "head" in choice: 
-    dead("Well that was tasty!")
-  else:
-    print("I got no idea what that means.")
+def cthulhu_room():
+    print("Here you see the great evil Cthulhu.")
+    print("He, it, whatever stares at you and you go insane.")
+    print("Do you flee for your life or eat your head?")
+    choice = input("> ").lower()
+    if "flee" in choice:
+        start()
+    elif "head" in choice:
+        dead("Well that was tasty!")
+    else:
+        print("I got no idea what that means.")
+        cthulhu_room()
 
 def dead(why):
-  print(why, "Good job!") 
-  exit(0)
+    print(why, "Good job!")
+    exit(0)
 
-def start(): 
-  print("You are in a dark room.")
-  print("There is a door to your right and left.") 
-  print("Which one do you take?")
-  choice = input("> ")
-  if choice == "left": 
-    bear_room()
-  elif choice == "right": 
-    cthulhu_room()
-  else: 
-    dead("You stumble around the room until you starve.")
+def start():
+    print("You are in a dark room.")
+    print("There is a door to your right and left.")
+    print("Which one do you take?")
+    choice = input("> ").lower()
+    if choice == "left":
+        bear_room()
+    elif choice == "right":
+        cthulhu_room()
+    else:
+        dead("You stumble around the room until you starve.")
 
 start()
