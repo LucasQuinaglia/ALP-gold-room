@@ -1,14 +1,14 @@
 from sys import exit
 
 def dead_end():
-  print('Is just a dead end path')
+  print("It's just a dead end path")
   print('you get back.')
   return back_room()
   
 
 def back_room():
   print('This room get nothing, just walls and lights on the ceiling.')
-  print('Is like a maze, you can go left or right.')
+  print("It's like a maze, you can go left or right.")
   print('Which way do you go?')
   choice = input('> ')
   if choice == 'left':
@@ -26,8 +26,12 @@ def the_monster():
   print('The child apparently it is calm.')
   print('You get a bit closer.')
   print('And see something strange.')
-  print('The cild get the eyes black, like the void.')
-  
+  print('The child has black eyes, like the void.')
+  print('You feel a chill in your spine.')
+  print('Something in your mind says to get closer.')
+  print('You can try to resist or get closer.')
+  print('What do you do?')
+  choice = input('> ')  
 
 def gold_room(): 
   print("This room is full of gold. How much do you take?") 
